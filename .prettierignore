@@ -3,3 +3,6 @@
 **/*.ejs
 **/*.html
 package.json
+.local
+.output.js
+/node_modules/**

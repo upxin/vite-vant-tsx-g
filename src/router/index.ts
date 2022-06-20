@@ -3,17 +3,32 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 export const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/index',
+    redirect: '/home',
   },
   {
-    path: '/index',
-    name: 'index',
-    component: () => import('~/pages/home'),
+    path: '/home',
+    name: 'home',
+    component: () => import('@/pages/home'),
+  },
+  {
+    path: '/home/tab', // 这样定义path是为了给路由跳转动画用的 详情见App.vue
+    name: 'tab',
+    component: () => import('@/pages/stikyTab/index.vue'),
+  },
+  {
+    path: '/home/goods',
+    name: 'goods',
+    component: () => import('@/pages/goods/index.vue'),
+  },
+  {
+    path: '/home/test',
+    name: 'test',
+    component: () => import('@/pages/test/index'),
   },
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
-    redirect: { name: 'index' },
+    component: () => import('@/pages/404'),
   },
 ];
 

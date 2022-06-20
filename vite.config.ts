@@ -12,7 +12,7 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '~/',
+        find: '@/',
         replacement: `${resolve(__dirname, 'src')}/`,
       },
     ],
@@ -43,7 +43,9 @@ export default defineConfig({
       plugins: [
         postCssPxToRem({
           rootValue: 37.5,
+          // exclude: /(node_module)/, //默认false，可以（reg）利用正则表达式排除某些文件夹的方法，例如/(node_module)/ 。如果想把前端UI框架内的px也转换成rem，请把此属性设为默认值
           propList: ['*'],
+          // selectorBlackList: ['body'], //要忽略并保留为px的选择器 vant4 变量都写在body，如果不想转就忽略body选择器
         }),
       ],
     },
@@ -59,7 +61,7 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: 99,
+    port: 80,
     https: false,
     open: false,
     cors: true,
